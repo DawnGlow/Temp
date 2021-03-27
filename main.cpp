@@ -4,6 +4,8 @@
 #include <cctype>
 using std::cin;
 using std::string;
+using std::cout;
+using std::endl;
 
 class Stack
 {
@@ -11,6 +13,8 @@ public:
 	void initializeStack(int stackMaxSize);
 	void pushStack(char v);
 	char popStack();
+	int getStackSize();
+	char returndata(int index);
 
 private:
 	char* data;
@@ -36,6 +40,16 @@ char Stack::popStack()
 	data[(stackSize) - 1] = 0;
 	stackSize--;
 	return v;
+}
+
+int Stack::getStackSize()
+{
+	return stackSize;
+}
+
+char Stack::returndata(int index)
+{
+	return data[index];
 }
 
 int main(void)
@@ -74,6 +88,21 @@ int main(void)
 		else
 			exit(1);
 	}
+
+
+
+
+
+	for (int i = 0; i < (operand.getStackSize()); i++)
+	{
+		if (islower(operand.returndata(i)))
+			cout << toupper(operand.returndata(i)) << " ";
+		else
+			cout << operand.returndata(i) << " ";
+	}
+
+	cout << "RESULT" << endl;
+ 
 }
 
 
