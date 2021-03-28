@@ -2,6 +2,9 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <cmath>
+#include <vector>
+
 using std::cin;
 using std::string;
 using std::cout;
@@ -15,6 +18,7 @@ public:
 	char popStack();
 	int getStackSize();
 	char returndata(int index);
+	bool result();
 
 private:
 	char* data;
@@ -23,7 +27,7 @@ private:
 
 void Stack::initializeStack(int stackMaxSize)
 {
-	data = (char*)calloc(stackMaxSize, sizeof(int));
+	data = (char*)calloc(stackMaxSize, sizeof(char));
 	stackSize = 0;
 }
 
@@ -88,21 +92,45 @@ int main(void)
 		else
 			exit(1);
 	}
-
-
-
-
-
-	for (int i = 0; i < (operand.getStackSize()); i++)
+	switch (prop)
 	{
-		if (islower(operand.returndata(i)))
-			cout << toupper(operand.returndata(i)) << " ";
-		else
-			cout << operand.returndata(i) << " ";
+	case 1:
+		cout << "P ";
+		break;
+	case 2:
+		cout << "P Q ";
+		break;
+	case 3:
+		cout << "P Q R ";
+		break;
+	default:
+		cout << "Error";
+		break;
 	}
-
 	cout << "RESULT" << endl;
- 
+
+	
+	bool** value = new bool* [pow(2, prop)];
+	for (int i = 0; i < pow(2, prop);i++)
+	{
+		value[i] = new bool[prop];
+	}
+	//bool* value = (bool*)malloc(sizeof(bool) * prop);
+	for (int i = 0; i < pow(2, prop);i++)
+	{
+		cout << endl;
+		
+	}
+	
+
+
+
+
+
+
+
+
+	return 0;
 }
 
 
